@@ -9,7 +9,7 @@ Based on Surnfu's <a href="organization.js">organization.js</a> and expansion fe
 
 <h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>CHANGELOG</h2>
 - Added supported Google Organizational Chart data. 
-- Added OrgOptions, OrgStyleSheet.
+- Added OrgOptions and OrgStyleSheet function.
 - Added html parent element position adaptive.
 - Fixed some bugs.
 
