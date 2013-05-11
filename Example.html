@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>orgChart Example</title>
+<script language="javascript" src="orgchart.js"></script>
+<link rel="stylesheet" type="text/css" href="orgchart.css">
+</head>
+
+<body>
+    <div id="form" style="border:solid #b0e0e6; margin:0 auto; padding: 10px 10px 10px 10px; width:640px; height:480px;">
+        <div id="OrgChart"></div>
+    </div>
+</body>
+
+<script language="javascript">
+// orgChart Demo by rchockxm
+
+// Demo Data
+var P = ['Bell', 'Bob', 'Frank', 'James', 'Alex', 'Edward', 'Tony', 'Jonic', 'Benny', 'Tom', 'Alice', 'Fred', 'Eric', 'Mal'];
+var S = [];
+var tRootNode = new OrgNode();
+tRootNode.customParam.Caption = "Root";
+tRootNode.customParam.Description = "Demo";
+
+var HwndNode;
+var HwndObject = {};
+var ChildNode;
+for (var i=0; i<P.length; i++) {
+    var Data = P[i];
+    var Caption = Data;
+
+    HwndObject[Caption] = new OrgNode();
+    HwndObject[Caption].customParam.Caption = Caption;
+    HwndObject[Caption].customParam.Description = "Demo";
+
+    S[i] = Caption;
+
+    if (i == 0) {
+        ChildNode = HwndObject[Caption];
+    }
+    else if (i > 1) { 
+        var index = Math.round(Math.random() * (S.length - 0));
+        if (index > S.length) {
+            index = 0;
+        }
+        if (typeof S[index] == "string") {
+            HwndObject[S[index]].Nodes.Add(HwndObject[Caption]);
+        }
+    }
+}
+
+tRootNode.Nodes.Add(ChildNode);
+
+/*var tGoogleData = [
+          [{v:'Mike', f:'Mike<div style="color:red; font-style:italic">President</div>'}, '', 'The President'],
+          [{v:'Jim', f:'Jim<div style="color:red; font-style:italic">Vice President</div>'}, 'Mike', 'VP'],
+          ['Alice', 'Mike', ''],
+          ['Bob', 'Jim', 'Bob Sponge'],
+          ['Carol', 'Bob', '']];
+ 
+tRootNode = LoadGoogleOrgChartData(tGoogleData);*/
+
+// Options
+var tOptions = new OrgOptions();
+tOptions.AutoPos = true;
+//tOptions.Top = 8;
+//tOptions.Left = 100;
+//tOptions.IntervalWidth = 10;
+//tOptions.IntervalHeight = 20;
+tOptions.LineColor = "#00bfff";
+tOptions.LineSize = 3;
+tOptions.EdgeTemplet = "<div id=\"{Id}\" class=\"OrgEdge\"><span>{Caption}</span><div>{Description}</div></div>";
+
+// StyleSheet
+var tStyleSheet = new OrgStyleSheet();
+tStyleSheet.CssText = "";
+
+// Render Chart
+var ogChart = new OrgChart(tRootNode);
+ogChart.Options = tOptions;
+ogChart.StyleSheet = tStyleSheet;
+ogChart.Render();
+</script>
+
+</html>
