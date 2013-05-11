@@ -1,5 +1,5 @@
 /*
- * orgChart - 1.01
+ * js-orgChart - 1.01
  * Copyright (c) 2013 rchockxm (rchockxm.silver@gmail.com)
  * Copyright (c) 2009 Surnfu composition
  *
