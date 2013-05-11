@@ -5,7 +5,7 @@ Javascript Organizational Chart
 
 <h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>About</h2>
 
-Based on Surnfu's <a href="organization.js">organization.js</a> and expansion feature for draw organizational chart.
+Based on Surnfu's <a href="http://www.on-cn.com">organization.js</a> and expansion feature for draw organizational chart.
 
 <h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>CHANGELOG</h2>
 - Added supported Google Organizational Chart data. 
