@@ -1,5 +1,0 @@
-orgChart
-========
-
-Javascript Organizational Chart
-
