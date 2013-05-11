@@ -1,4 +1,4 @@
-orgChart
+js-orgChart
 ========
 
 Javascript Organizational Chart
