@@ -16,7 +16,7 @@ Based on Surnfu's <a href="http://www.on-cn.com">organization.js</a> and expansi
 - Fixed some bugs.
 
 <h4>1.01<h4/>
-- Added supported Google Organizational Chart data. 
+- Added support Google Organizational Chart data. 
 - Added OrgOptions and OrgStyleSheet function.
 - Added html parent element position adaptive.
 - Fixed some bugs.
