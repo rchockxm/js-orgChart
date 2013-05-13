@@ -455,9 +455,10 @@ function OrgChart(OrgNode_){
         }
     }
     
-    this.GetContainerStyle() {
+    this.GetContainerStyle = function() {
         var objStyle = {'width':this.DivWidth, 'height':this.DivHeight}; 
-     
+        
+        return objStyle; 
     }
 
     function find_parentNodes(id) {
