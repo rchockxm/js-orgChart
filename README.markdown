@@ -10,6 +10,10 @@ Based on Surnfu's <a href="http://www.on-cn.com">organization.js</a> and expansi
 <h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>CHANGELOG</h2>
 
 <h4>1.02<h4/>
+- Added GetContainerStyle function to get chart style.
+- Added paddingOffsetTop and paddingOffsetLeft for Options to set padding pos.
+- Added HightlightText and HightlightTextColor for OrgNode to set color text.
+- Fixed some bugs.
 
 <h4>1.01<h4/>
 - Added supported Google Organizational Chart data. 
