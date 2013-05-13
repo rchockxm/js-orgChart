@@ -1,5 +1,5 @@
 /*
- * js-orgChart - 1.01
+ * js-orgChart - 1.02
  * Copyright (c) 2013 rchockxm (rchockxm.silver@gmail.com)
  * Copyright (c) 2009 Surnfu composition
  *
@@ -56,11 +56,14 @@ function OrgOptions() {
     this.AutoPos = true;
     this.Depth = 0;
 
+    this.paddingOffeSetTop = 0;
+    this.paddingOffsetLeft = 0;
+
     this.EdgeWidth = null;
     this.EdgeHeight = null;
     this.EdgeTemplet = null;
-    this.ShowType = null;
-  
+    this.ShowType = null;    
+ 
     var objOptions = {
         LineSize: this.LineSize,
         LineColor: this.LineColor,
@@ -70,6 +73,8 @@ function OrgOptions() {
         Left: this.Left,
         AutoPos: this.AutoPos,
         Depth: this.Depth,
+        paddingOffeSetTop: this.paddingOffeSetTop,
+        paddingOffsetLeft: this.paddingOffsetLeft,        
         EdgeWidth: this.EdgeWidth,
         EdgeHeight: this.EdgeHeight,
         EdgeTemplet: this.EdgeTemplet,
@@ -108,6 +113,9 @@ function OrgNode(){
     this.Type = null;
     this.Nodes = [];
     this.customParam = [];
+    
+    this.HightlightText = "";
+    this.HightlightTextColor = "";
   
     var This = this;
   
@@ -142,13 +150,19 @@ function OrgNode(){
         //tempHTML = (this.Link == null) ? tempHTML.replace("{Link}", "JavaScript:void(0)") : tempHTML.replace("{Link}", this.Link);
         //tempHTML = tempHTML.replace("{Description}", this.Description);
         
-        for(var Param_ in this.customParam){
+        for (var Param_ in this.customParam){
             tempHTML = tempHTML.replace("{" + Param_ + "}", this.customParam[Param_]);
             if (Param_ == "Caption") {
                 tempHTML = tempHTML.replace("{UidName}", this.customParam[Param_]);
             }
         }
         
+        if (this.HightlightText != null || this.HightlightText != "" || this.HightlightText != undefined) {
+            if (this.HightlightTextColor != null || this.HightlightTextColor != "" || this.HightlightTextColor != undefined) { 
+                tempHTML = tempHTML.replace(this.HightlightText, '<font color="' + this.HightlightTextColor + '">' + this.HightlightText + '</font>');
+            }
+        }       
+                
         tempDiv.innerHTML = tempHTML;
         this.Edge = $(this.Id);
     
@@ -246,8 +260,11 @@ function OrgChart(OrgNode_){
   
     this.CssText = "";
   
-    var This = this;
-
+    this.DivWidth = 0;
+    this.DivHeight = 0;
+  
+    var This = this;  
+    
     this.Render = function() {
         if (OrgNode_ == null || OrgNode_ == "" || OrgNode_ == undefined) {
             return;
@@ -363,7 +380,18 @@ function OrgChart(OrgNode_){
             this.Nodes[n].Left += MaxLeftValue;
             this.Nodes[n].Edge.style.left = this.Nodes[n].Left + "px";
             this.Nodes[n].Edge.style.top = this.Nodes[n].Top + "px";
+            
+            if (this.Nodes[n].Left >= this.DivWidth) {
+                this.DivWidth = this.Nodes[n].Left;              
+            }
+            
+            if (this.Nodes[n].Top >= this.DivHeight) {
+                this.DivHeight = this.Nodes[n].Top;              
+            }
         }
+        
+        this.DivWidth += this.IntervalWidth + this.Left;
+        this.DivHeight += this.IntervalHeight;
 
         for (var n=1; n<=this.Depth; n++) {
             var tempNodes = this.DepthGroup[n].Nodes;
@@ -425,6 +453,11 @@ function OrgChart(OrgNode_){
                 }
             }
         }
+    }
+    
+    this.GetContainerStyle() {
+        var objStyle = {'width':this.DivWidth, 'height':this.DivHeight}; 
+     
     }
 
     function find_parentNodes(id) {
