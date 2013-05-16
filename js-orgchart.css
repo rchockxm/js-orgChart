@@ -9,6 +9,10 @@
     background-color: #e0ffff;
     width: 40px;
     height: 50px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 10px;
 }
 
 .OrgEdge:link   { background-color: #6699FF; }
