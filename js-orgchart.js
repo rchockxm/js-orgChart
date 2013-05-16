@@ -302,7 +302,7 @@ function OrgChart(OrgNode_){
     
         var RootContainer = this.Nodes[0].Container;
         var parentOffset = {"top":0, "left":0};
-        var parentNodes = find_parentNodes("OrgChart");
+        var parentNodes = find_parentNodes(RootContainer);
 
         for (key in parentNodes) {    
             var HwndElement = parentNodes[key];
