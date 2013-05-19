@@ -79,9 +79,16 @@ var tStyleSheet = new OrgStyleSheet();
 tStyleSheet.CssText = "";
 
 // Render Chart
-var ogChart = new OrgChart(tRootNode);
+var ogChart = new OrgChart();
+ogChart.RootNodes = tRootNode;
 ogChart.Options = tOptions;
 ogChart.StyleSheet = tStyleSheet;
+ogChart.NodeOnClick = function() {
+    var hwnd = document.getElementById(this.id).getElementsByTagName("span");
+    var name = hwnd[0].innerHTML;
+
+    alert("Name: " + name);
+};
 ogChart.Render();
 
 var oDivStyle = ogChart.GetContainerStyle();
