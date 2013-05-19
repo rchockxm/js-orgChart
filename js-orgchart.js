@@ -1,5 +1,5 @@
 /*
- * js-orgChart - 1.02
+ * js-orgChart - 1.03
  * Copyright (c) 2013 rchockxm (rchockxm.silver@gmail.com)
  * Copyright (c) 2009 Surnfu composition
  *
@@ -62,7 +62,7 @@ function OrgOptions() {
     this.EdgeWidth = null;
     this.EdgeHeight = null;
     this.EdgeTemplet = null;
-    this.ShowType = null;    
+    this.ShowType = null;
  
     var objOptions = {
         LineSize: this.LineSize,
@@ -97,9 +97,6 @@ function OrgStyleSheet() {
 function OrgNode(){
     this.Container = "OrgChart";
     this.SubContainer = "OrgNode";
-    //this.Text = null;
-    //this.Link = null;
-    //this.Description = null;
     this.EdgeWidth = null;
     this.EdgeHeight = null;
     this.parentNode = null;
@@ -126,7 +123,8 @@ function OrgNode(){
     
     this.Edge = null;
     this.Templet = null;
-    this.Id = "OrgNode_" + GetRandomStringId(14);
+    this.Id = this.SubContainer + "_" + GetRandomStringId(14);
+    this.SubContainer = this.SubContainer + "_" + GetRandomStringId(10);
   
     this.inIt = function(){
         if (this.inIted == true) {
@@ -146,9 +144,6 @@ function OrgNode(){
         
         var tempHTML = this.Templet;
         tempHTML = tempHTML.replace("{Id}", this.Id);
-        //tempHTML = tempHTML.replace("{Text}", this.Text);
-        //tempHTML = (this.Link == null) ? tempHTML.replace("{Link}", "JavaScript:void(0)") : tempHTML.replace("{Link}", this.Link);
-        //tempHTML = tempHTML.replace("{Description}", this.Description);
         
         for (var Param_ in this.customParam){
             tempHTML = tempHTML.replace("{" + Param_ + "}", this.customParam[Param_]);
@@ -236,7 +231,7 @@ function OrgNode(){
     }    
 }
 
-function OrgChart(OrgNode_){
+function OrgChart(){
     this.Options = null;
     this.StyleSheet = null;
   
@@ -249,7 +244,8 @@ function OrgChart(OrgNode_){
     this.Left = 0;
     this.AutoPos = true;
     this.Depth = 0;
-  
+    
+    this.RootNodes = "";
     this.Nodes = [];
     this.DepthGroup = []; 
     
@@ -257,6 +253,8 @@ function OrgChart(OrgNode_){
     this.EdgeHeight = null;
     this.EdgeTemplet = null;
     this.ShowType = null;
+
+    this.NodeOnClick = "";
   
     this.CssText = "";
   
@@ -264,8 +262,11 @@ function OrgChart(OrgNode_){
     this.DivHeight = 0;
   
     var This = this;  
+    var OrgNode_ = "";
     
     this.Render = function() {
+        OrgNode_ = this.RootNodes; 
+
         if (OrgNode_ == null || OrgNode_ == "" || OrgNode_ == undefined) {
             return;
         }
@@ -287,13 +288,13 @@ function OrgChart(OrgNode_){
         this.EdgeWidth = this.Options.EdgeWidth;
         this.EdgeHeight = this.Options.EdgeHeight;
         this.EdgeTemplet = this.Options.EdgeTemplet;
-        this.ShowType = this.Options.ShowType;        
+        this.ShowType = this.Options.ShowType;   
         
         if (this.StyleSheet == null || this.StyleSheet == "" || this.StyleSheet == undefined) {
             this.StyleSheet = new OrgStyleSheet();  
         }               
 
-        this.CssText = this.StyleSheet.CssText;
+        this.CssText = this.StyleSheet.CssText;        
         
         EdgeInit(OrgNode_);
         GetNodesDepth(OrgNode_);
@@ -303,6 +304,15 @@ function OrgChart(OrgNode_){
         var RootContainer = this.Nodes[0].Container;
         var parentOffset = {"top":0, "left":0};
         var parentNodes = find_parentNodes(RootContainer);
+
+        if (typeof this.NodeOnClick === "function") {
+            var cNodes = document.getElementById(RootContainer).childNodes;
+            
+            for (var i=0; i<cNodes.length; i++) {
+                cNodes[i].onclick = this.NodeOnClick;
+                //alert(  cNodes[i].id  );
+            }
+        }
 
         for (key in parentNodes) {    
             var HwndElement = parentNodes[key];
