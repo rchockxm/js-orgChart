@@ -255,6 +255,7 @@ function OrgChart(){
     this.ShowType = null;
 
     this.NodeOnClick = "";
+    this.NodeOnMouseMove = "";
   
     this.CssText = "";
   
@@ -310,9 +311,16 @@ function OrgChart(){
             
             for (var i=0; i<cNodes.length; i++) {
                 cNodes[i].onclick = this.NodeOnClick;
-                //alert(  cNodes[i].id  );
             }
         }
+        
+        if (typeof this.NodeOnMouseMove === "function") {
+            var cNodes = document.getElementById(RootContainer).childNodes;
+            
+            for (var i=0; i<cNodes.length; i++) {
+                cNodes[i].onmousemove = this.NodeOnMouseMove;
+            }
+        }                
 
         for (key in parentNodes) {    
             var HwndElement = parentNodes[key];
