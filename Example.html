@@ -89,6 +89,12 @@ ogChart.NodeOnClick = function() {
 
     alert("Name: " + name);
 };
+ogChart.NodeOnMouseMove = function() {
+    var hwnd = document.getElementById(this.id).getElementsByTagName("span");
+    var name = hwnd[0].innerHTML;
+
+    //alert("Name: " + name);
+};
 ogChart.Render();
 
 var oDivStyle = ogChart.GetContainerStyle();
