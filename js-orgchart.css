@@ -1,26 +1,36 @@
-.OrgEdge {
-    font-size: 12px;
+.OrgEdge {    
     padding: 5px 5px 5px 5px;
     clear: left;
     float: left;
     text-align: center;
     position: absolute;
-    border: solid #b0e0e6;
-    background-color: #e0ffff;
+    font-size: 12px;
+    font-family:arial,helvetica;
     width: 40px;
     height: 50px;
+    cursor: default;
+    border: 2px solid #b5d9ea;
+    border-radius: 5px;
+    background:-webkit-gradient(linear, left top, left bottom, from(#edf7ff), to(#cde7ee));
+    background-color: #edf7ff;
     -moz-border-radius: 5px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
     -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 10px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+    box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
 }
 
 .OrgEdge:link   { background-color: #6699FF; }
 .OrgEdge:visited { background-color: #3366FF; }
-.OrgEdge:hover { background-color: #6699FF; }
+.OrgEdge:hover { 
+    border: 2px solid #e3ca4b;
+    background-color: #fff7ae;
+    background:-webkit-gradient(linear, left top, left bottom, from(#fff7ae), to(#eee79e));
+}
 .OrgEdge:active  { background-color: #3366FF; }
 
 .OrgEdge div {
-    color: #FFA500;
-    font-weight: 800;
+    color: #F62217;
+    font-size: 0.8em !important;
+    font-style:italic;
 }
