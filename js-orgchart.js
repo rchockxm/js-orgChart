@@ -1,5 +1,5 @@
 /*
- * js-orgChart - 1.03
+ * js-orgChart - 1.04
  * Copyright (c) 2013 rchockxm (rchockxm.silver@gmail.com)
  * Copyright (c) 2009 Surnfu composition
  *
@@ -256,6 +256,8 @@ function OrgChart(){
 
     this.NodeOnClick = "";
     this.NodeOnMouseMove = "";
+    this.NodeOnMouseOver = "";
+    this.NodeOnMouseOut = "";
   
     this.CssText = "";
   
@@ -306,21 +308,10 @@ function OrgChart(){
         var parentOffset = {"top":0, "left":0};
         var parentNodes = find_parentNodes(RootContainer);
 
-        if (typeof this.NodeOnClick === "function") {
-            var cNodes = document.getElementById(RootContainer).childNodes;
-            
-            for (var i=0; i<cNodes.length; i++) {
-                cNodes[i].onclick = this.NodeOnClick;
-            }
-        }
-        
-        if (typeof this.NodeOnMouseMove === "function") {
-            var cNodes = document.getElementById(RootContainer).childNodes;
-            
-            for (var i=0; i<cNodes.length; i++) {
-                cNodes[i].onmousemove = this.NodeOnMouseMove;
-            }
-        }                
+        event_addevent(RootContainer, this.NodeOnClick, "onclick");
+        event_addevent(RootContainer, this.NodeOnMouseMove, "onmousemove");
+        event_addevent(RootContainer, this.NodeOnMouseOver, "onmouseover");
+        event_addevent(RootContainer, this.NodeOnMouseOut, "onmouseout");
 
         for (key in parentNodes) {    
             var HwndElement = parentNodes[key];
@@ -477,6 +468,25 @@ function OrgChart(){
         var objStyle = {'width':this.DivWidth, 'height':this.DivHeight}; 
         
         return objStyle; 
+    }
+
+    function event_addevent(ev_node, ev_func, ev_name) {
+        if (typeof ev_func === "function") {
+            var cNodes = document.getElementById(ev_node).childNodes;
+            
+            for (var i=0; i<cNodes.length; i++) {
+                switch (ev_name) {
+                    case 'onmousemove': cNodes[i].onmousemove = ev_func;
+                    break;
+                    case 'onmouseover': cNodes[i].onmouseover = ev_func;
+                    break;
+                    case 'onmouseout': cNodes[i].onmouseout = ev_func;
+                    break;
+                    case 'onclick': cNodes[i].onclick = ev_func;
+                    break;
+                }                
+            }
+        }
     }
 
     function find_parentNodes(id) {
@@ -746,7 +756,6 @@ function OrgChart(){
             TempletStr += "writing-mode: tb-rl;";
         }
         
-        //TempletStr += "\" title=\"{Description}\" ><a href=\"{Link}\" target=\"_blank\">{Text}</a></div>";
         TempletStr += "\"><span>{Caption}</span><div><font color=\"{Color}\">{Description}</font></div></div>";
           
         return TempletStr;
