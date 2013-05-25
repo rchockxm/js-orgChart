@@ -9,6 +9,10 @@ Based on Surnfu's <a href="http://www.on-cn.com">organization.js</a> and expansi
 
 <h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>CHANGELOG</h2>
 
+<h4>1.04</h4>
+- Added NodeOnMouseMove, NodeOnMouseOver, NodeOnMouseOut for OrgChart to set node mouse event.
+- Fixed some bugs.
+
 <h4>1.03</h4>
 - Added NodeOnClick for OrgChart to set node click event.
 - Added RootNodes ror OrgChart to set nodes data.
