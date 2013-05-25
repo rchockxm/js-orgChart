@@ -5,7 +5,7 @@
     text-align: center;
     position: absolute;
     font-size: 12px;
-    font-family:arial,helvetica;
+    font-family: arial,helvetica;
     width: 60px;
     height: 50px;
     cursor: default;
@@ -24,6 +24,32 @@
     box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
 }
 
+.OrgEdge_Hight {    
+    padding: 5px 5px 5px 5px;
+    clear: left;
+    float: left;
+    text-align: center;
+    position: absolute;
+    font-size: 12px;
+    font-family: arial,helvetica;
+    width: 60px;
+    height: 50px;
+    cursor: default;
+    border: 2px solid #808080;
+    border-radius: 5px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#B8B8B8), to(#F0F0F0));
+    background: -moz-linear-gradient(top, #B8B8B8, #F0F0F0);
+    background: -ms-linear-gradient(top, #B8B8B8, #F0F0F0);
+    background: -o-linear-gradient(top, #B8B8B8, #F0F0F0);
+    background: linear-gradient(to bottom, #B8B8B8, #F0F0F0);
+    background-color: #B8B8B8;
+    -moz-border-radius: 5px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+    -webkit-border-radius: 5px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+    box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+}
+
 .OrgEdge:link   { background-color: #6699FF; }
 .OrgEdge:visited { background-color: #3366FF; }
 .OrgEdge:hover { 
@@ -33,12 +59,18 @@
     background: -moz-linear-gradient(top, #fff7ae, #eee79e);
     background: -ms-linear-gradient(top, #fff7ae, #eee79e);
     background: -o-linear-gradient(top, #fff7ae, #eee79e);
-    background: linear-gradient(to bottom, #fff7ae, #eee79e);    
+    background: linear-gradient(to bottom, #fff7ae, #eee79e);
 }
 .OrgEdge:active  { background-color: #3366FF; }
 
 .OrgEdge div {
     color: #F62217;
     font-size: 0.8em !important;
-    font-style:italic;
+    font-style: italic;
+}
+
+.OrgEdge_Hight div {
+    color: #F62217;
+    font-size: 0.8em !important;
+    font-style: italic;
 }
