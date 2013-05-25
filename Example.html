@@ -36,11 +36,27 @@ body {
     float: left;
     padding: 2px 0px 0px 50px;
 }
+#form_title .form_title_search {
+    color: #FFFFFF;
+    float: right;
+    margin: -4px 40px 0 0; 
+}
+#form_title .form_title_search input[type="text"] {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-box-shadow: 2px 2px 3px #666;
+    -webkit-box-shadow: 2px 2px 3px #666;
+    box-shadow: 2px 2px 3px #666;
+    outline: 0;
+    -webkit-appearance: none;
+}
 #form_content {
     border-radius: 0px 0px 10px 10px;
     -moz-border-radius: 0px 0px 10px 10px;
     -webkit-border-radius: 0px 0px 10px 10px;
-    border:1px solid #C0C0C0;
+    border: 1px solid #C0C0C0;
     margin: 0 auto; 
     padding: 10px 10px 10px 10px; 
     width: 640px; 
@@ -54,6 +70,7 @@ body {
     <div id="form_title">
         <div class="form_title_content">js-OrgChart Example</div>
         <div class="form_title_log"></div>
+        <div class="form_title_search">Search: <input type="text" id="search_item" onkeydown="input_keydown_event(event);" /></div>
     </div>
     <div id="form_content" style="">        
         <div id="OrgChart"></div>        
@@ -170,6 +187,26 @@ if (newWidth > oriWidth) {
 
 if (newHeight > oriHeight) {
     document.getElementById("form_content").style.height = newHeight + "px";
+}
+
+// Search Function
+function input_keydown_event(event) {
+    event = (event == undefined) ? window.event : event;
+    if (event.keyCode == 13) {
+        var search_val = document.getElementById("search_item").value;
+        var childs = document.getElementById("OrgChart").getElementsByTagName("div");
+        for (var i=0; i<childs.length; i++) {
+            var span_name = childs[i].getElementsByTagName("span")[0];
+            if (span_name != undefined || span_name != null) {
+                if (search_val != "" && span_name.innerHTML.indexOf(search_val) >= 0) {
+                    span_name.parentNode.setAttribute("class", "OrgEdge_Hight");
+                }
+                else {
+                    span_name.parentNode.setAttribute("class", "OrgEdge");
+                }
+            }
+        }
+    }
 }
 </script>
 
