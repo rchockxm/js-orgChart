@@ -6,12 +6,16 @@
     position: absolute;
     font-size: 12px;
     font-family:arial,helvetica;
-    width: 40px;
+    width: 60px;
     height: 50px;
     cursor: default;
     border: 2px solid #b5d9ea;
     border-radius: 5px;
-    background:-webkit-gradient(linear, left top, left bottom, from(#edf7ff), to(#cde7ee));
+    background: -webkit-gradient(linear, left top, left bottom, from(#edf7ff), to(#cde7ee));
+    background: -moz-linear-gradient(top, #edf7ff, #cde7ee);
+    background: -ms-linear-gradient(top, #edf7ff, #cde7ee);
+    background: -o-linear-gradient(top, #edf7ff, #cde7ee);
+    background: linear-gradient(to bottom, #edf7ff, #cde7ee);
     background-color: #edf7ff;
     -moz-border-radius: 5px;
     -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
@@ -25,7 +29,11 @@
 .OrgEdge:hover { 
     border: 2px solid #e3ca4b;
     background-color: #fff7ae;
-    background:-webkit-gradient(linear, left top, left bottom, from(#fff7ae), to(#eee79e));
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff7ae), to(#eee79e));
+    background: -moz-linear-gradient(top, #fff7ae, #eee79e);
+    background: -ms-linear-gradient(top, #fff7ae, #eee79e);
+    background: -o-linear-gradient(top, #fff7ae, #eee79e);
+    background: linear-gradient(to bottom, #fff7ae, #eee79e);    
 }
 .OrgEdge:active  { background-color: #3366FF; }
 
