@@ -2,19 +2,68 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>orgChart Example</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<title>js-orgChart by Rchockxm</title>
 <script language="javascript" src="js-orgchart.js"></script>
 <link rel="stylesheet" type="text/css" href="js-orgchart.css">
+<style type="text/css">
+body {
+    background-color: #F8F8F8;
+}
+#form_title {
+    border-radius: 10px 10px 0px 0px;
+    -moz-border-radius: 10px 10px 0px 0px;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    border:1px solid #C0C0C0;
+    margin: 0 auto; 
+    padding: 10px 10px 10px 10px; 
+    width: 640px; 
+    height: 16px;
+    background-color: #282828;
+}
+#form_title .form_title_content {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1.0em !important;
+    font-family: "Times New Roman", Times, serif;
+    float: left;
+}
+#form_title .form_title_log {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 0.8em !important;
+    font-family: "Times New Roman", Times, serif;
+    float: left;
+    padding: 2px 0px 0px 50px;
+}
+#form_content {
+    border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    -webkit-border-radius: 0px 0px 10px 10px;
+    border:1px solid #C0C0C0;
+    margin: 0 auto; 
+    padding: 10px 10px 10px 10px; 
+    width: 640px; 
+    height: 480px;
+    background-color: #FFFFFF;
+}
+</style>
 </head>
 
 <body>
-    <div id="form" style="border:solid #b0e0e6; margin:0 auto; padding: 10px 10px 10px 10px; width:640px; height:480px;">
-        <div id="OrgChart"></div>
+    <div id="form_title">
+        <div class="form_title_content">js-OrgChart Example</div>
+        <div class="form_title_log"></div>
+    </div>
+    <div id="form_content" style="">        
+        <div id="OrgChart"></div>        
     </div>
 </body>
 
 <script language="javascript">
 // js-orgChart Demo by rchockxm
+var oriWidth = 640;
+var oriHeight = 480;
 
 // Demo Data
 var P = ['Bell', 'Bob', 'Frank', 'James', 'Alex', 'Edward', 'Tony', 'Jonic', 'Shannon', 'cwc', 'Benny', 'Tom', 'Alice', 'Fred', 'Eric', 'Mal'];
@@ -64,12 +113,12 @@ tRootNode = LoadGoogleOrgChartData(tGoogleData);*/
 // Options
 var tOptions = new OrgOptions();
 tOptions.AutoPos = true;
-//tOptions.Top = 8;
-//tOptions.Left = 100;
+tOptions.Top = 8;
+tOptions.Left = 20;
 //tOptions.paddingOffsetTop = 0;
 //tOptions,paddingOffsetLeft = 0;
-//tOptions.IntervalWidth = 10;
-//tOptions.IntervalHeight = 20;
+//tOptions.IntervalWidth = 100;
+//tOptions.IntervalHeight = 60;
 tOptions.LineColor = "#3388dd";
 tOptions.LineSize = 1;
 tOptions.EdgeTemplet = "<div id=\"{Id}\" class=\"OrgEdge\"><span>{Caption}</span><div>{Description}</div></div>";
@@ -85,19 +134,43 @@ ogChart.Options = tOptions;
 ogChart.StyleSheet = tStyleSheet;
 ogChart.NodeOnClick = function() {
     var hwnd = document.getElementById(this.id).getElementsByTagName("span");
-    var name = hwnd[0].innerHTML;
+    var name = hwnd[0].firstChild.data;
 
-    alert("Name: " + name);
+    document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "Click: Name = " + name;
 };
 ogChart.NodeOnMouseMove = function() {
     var hwnd = document.getElementById(this.id).getElementsByTagName("span");
-    var name = hwnd[0].innerHTML;
+    var name = hwnd[0].firstChild.data;
 
-    //alert("Name: " + name);
+    //document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "MouseMove: Name = " + name;
+};
+ogChart.NodeOnMouseOver = function() {
+    var hwnd = document.getElementById(this.id).getElementsByTagName("span");
+    var name = hwnd[0].firstChild.data;
+
+    document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "MouseOver: Name = " + name;
+};
+ogChart.NodeOnMouseOut = function() {
+    var hwnd = document.getElementById(this.id).getElementsByTagName("span");
+    var name = hwnd[0].firstChild.data;
+
+    document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "MouseOut: Name = " + name;
 };
 ogChart.Render();
 
+// ReSet Div Content Width and Height
 var oDivStyle = ogChart.GetContainerStyle();
+var newWidth = oDivStyle.width;
+var newHeight = oDivStyle.height;
+
+if (newWidth > oriWidth) {
+    document.getElementById("form_title").style.width = newWidth + "px";
+    document.getElementById("form_content").style.width = newWidth + "px";
+}
+
+if (newHeight > oriHeight) {
+    document.getElementById("form_content").style.height = newHeight + "px";
+}
 </script>
 
 </html>
