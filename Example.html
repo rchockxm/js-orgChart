@@ -173,6 +173,17 @@ ogChart.NodeOnMouseOut = function() {
 
     document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "MouseOut: Name = " + name;
 };
+ogChart.DepthOnProcess = function(Depths, n) {
+    var DepthNodes = Depths;
+    var NowDepth = n;
+    
+    if (n == 4) {
+        for (var m=0; m<DepthNodes.length; m++) {
+            var divID = getElementById(DepthNodes[m].Id);
+            divID.style.border = '5px solid red';
+        }
+    }
+};
 ogChart.Render();
 
 // ReSet Div Content Width and Height
