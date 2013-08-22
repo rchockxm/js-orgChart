@@ -1,5 +1,5 @@
 /*
- * js-orgChart - 1.04
+ * js-orgChart - 1.06
  * Copyright (c) 2013 rchockxm (rchockxm.silver@gmail.com)
  * Copyright (c) 2009 Surnfu composition
  *
@@ -258,6 +258,7 @@ function OrgChart(){
     this.NodeOnMouseMove = "";
     this.NodeOnMouseOver = "";
     this.NodeOnMouseOut = "";
+    this.DepthOnProcess = "";
   
     this.CssText = "";
   
@@ -339,6 +340,10 @@ function OrgChart(){
 
         for (var n=this.Depth; n>=1; n--) {
             var DepthNodes = this.DepthGroup[n].Nodes;
+            
+            if (typeof this.DepthOnProcess === "function") {
+                 this.DepthOnProcess(DepthNodes, n);
+            }
           
             if (n == this.Depth) {
                 for(var m=0; m<DepthNodes.length; m++){
