@@ -11,6 +11,9 @@ Based on Surnfu's <a href="http://www.on-cn.com">organization.js</a> and expansi
 
 <h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>CHANGELOG</h2>
 
+<h4>1.061</h4>
+- Fixed example of 'Example-Select-Option.html' and 'Example.html', element has no document object(Thanks seanybob).
+
 <h4>1.06</h4>
 - Added DepthOnProcess for OrgChart to set event.
 
