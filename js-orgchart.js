@@ -308,6 +308,8 @@ function OrgChart(){
         var RootContainer = this.Nodes[0].Container;
         var parentOffset = {"top":0, "left":0};
         var parentNodes = find_parentNodes(RootContainer);
+        
+        var ParentDiv = document.getElementById(RootContainer);
 
         event_addevent(RootContainer, this.NodeOnClick, "onclick");
         event_addevent(RootContainer, this.NodeOnMouseMove, "onmousemove");
@@ -424,7 +426,7 @@ function OrgChart(){
                         tempLineHeight += (this.DepthGroup[n].Height - tempNodes[m].Height);
 
                         var tempLineTop = tempNodes[m].Top + tempNodes[m].Height;
-                        var tempBottomLine = new HtmlDrawLine(2, tempLineTop, tempLineLeft, tempLineHeight, this.LineSize, this.LineColor, "LineBottom_" + tempNodes[m].Id);
+                        var tempBottomLine = new HtmlDrawLine(ParentDiv, 2, tempLineTop, tempLineLeft, tempLineHeight, this.LineSize, this.LineColor, "LineBottom_" + tempNodes[m].Id);
                         
                         tempNodes[m].BottomLine = tempBottomLine.Line;
                     }
@@ -439,7 +441,7 @@ function OrgChart(){
                         tempNodes[m].parentNode.BottomLine.style.height = (tempLineHeight + tempBottomLineHeight) + "px";
                     }
                     else {
-                        var temptopLine = new HtmlDrawLine(2, tempLineTop, tempLineLeft, tempLineHeight, this.LineSize, this.LineColor, "LineTop_" + tempNodes[m].Id);
+                        var temptopLine = new HtmlDrawLine(ParentDiv, 2, tempLineTop, tempLineLeft, tempLineHeight, this.LineSize, this.LineColor, "LineTop_" + tempNodes[m].Id);
                         tempNodes[m].TopLine = temptopLine.Line;
                     }
                 }
@@ -454,7 +456,7 @@ function OrgChart(){
                     tempLineWidth -= (tempNodeGroups_[m][tempNodeGroups_[m].length-1].Width / 2);
                     var tempLineTop = tempNodeGroups_[m][0].Top - ((this.IntervalHeight - this.LineSize) / 2) - this.LineSize;
                     var tempLineLeft = tempNodeGroups_[m][0].Left + (tempNodeGroups_[m][0].Width / 2);
-                    var tempGroupLine = new HtmlDrawLine(1, tempLineTop, tempLineLeft, tempLineWidth, this.LineSize, this.LineColor, "LineGroup_" + tempNodeGroups_[m][0].Id);
+                    var tempGroupLine = new HtmlDrawLine(ParentDiv, 1, tempLineTop, tempLineLeft, tempLineWidth, this.LineSize, this.LineColor, "LineGroup_" + tempNodeGroups_[m][0].Id);
                 }
             }
         }
@@ -785,7 +787,7 @@ function OrgChart(){
         document.getElementsByTagname("head")[0].appendChild(tCss);
     }
   
-    function HtmlDrawLine(type_, top_, left_, long_, size_, color_, id_) {
+    function HtmlDrawLine(parentDiv, type_, top_, left_, long_, size_, color_, id_) {
         this.Type = type_;
       
         top_ = top_ + "";
@@ -801,7 +803,8 @@ function OrgChart(){
         this.Color = (color_ == undefined) ? "#000000" : color_;
         this.Line = document.createElement("DIV");
       
-        document.body.appendChild(this.Line);
+        parentDiv = (typeof parentDiv === "object") ? parentDiv : document.body;      
+        parentDiv.appendChild(this.Line);
       
         this.Line.innerText = "x";
         this.Line.style.position = "absolute";
