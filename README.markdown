@@ -11,7 +11,7 @@ Based on Surnfu's <a href="http://www.on-cn.com">organization.js</a> and expansi
 
 <h2><a name="usage" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Usage</h2>
 
-<pre>
+```html
 <script language="javascript" src="js-orgchart.js"></script>
 <link rel="stylesheet" type="text/css" href="js-orgchart.css">
 <div id="OrgChart"></div>
@@ -23,7 +23,7 @@ ogChart.Options = tOptions;
 ogChart.StyleSheet = tStyleSheet;
 ogChart.Render();
 </script>
-</pre>
+```
 
 <h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Changelog</h2>
 
