@@ -9,9 +9,8 @@ Based on Surnfu's <a href="http://www.on-cn.com">organization.js</a> and expansi
 
 <img src="http://i.imgur.com/Z3p0xJB.png" />
 
-<h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Usage</h2>
+<h2><a name="usage" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Usage</h2>
 
-<div class="highlight highlight-html">
 <pre>
 <script language="javascript" src="js-orgchart.js"></script>
 <link rel="stylesheet" type="text/css" href="js-orgchart.css">
@@ -25,7 +24,6 @@ ogChart.StyleSheet = tStyleSheet;
 ogChart.Render();
 </script>
 </pre>
-</div>
 
 <h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Changelog</h2>
 
@@ -55,10 +53,10 @@ ogChart.Render();
 - Added html parent element position adaptive.
 - Fixed some bugs.
 
-<h2><a name="author" class="anchor" href="#author"><span class="mini-icon mini-icon-link"></span></a>AUTHOR</h2>
+<h2><a name="author" class="anchor" href="#author"><span class="mini-icon mini-icon-link"></span></a>Author</h2>
 * 2013 rchockxm (rchockxm.silver@gmail.com)
 * 2009 Surnfu composition (Surnfu@126.com)
 
-<h2><a name="credits" class="anchor" href="#credits"><span class="mini-icon mini-icon-link"></span></a>CREDITS</h2>
+<h2><a name="credits" class="anchor" href="#credits"><span class="mini-icon mini-icon-link"></span></a>Credits</h2>
 * Surnfu - core
 * yifeng - getElementPosLeft, getElementPosTop
