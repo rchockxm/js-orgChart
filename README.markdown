@@ -9,7 +9,25 @@ Based on Surnfu's <a href="http://www.on-cn.com">organization.js</a> and expansi
 
 <img src="http://i.imgur.com/Z3p0xJB.png" />
 
-<h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>CHANGELOG</h2>
+<h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Usage</h2>
+
+<div class="highlight highlight-html">
+<pre>
+<script language="javascript" src="js-orgchart.js"></script>
+<link rel="stylesheet" type="text/css" href="js-orgchart.css">
+<div id="OrgChart"></div>
+<script>
+var tOptions = new OrgOptions();
+var tStyleSheet = new OrgStyleSheet();
+var ogChart = new OrgChart();
+ogChart.Options = tOptions;
+ogChart.StyleSheet = tStyleSheet;
+ogChart.Render();
+</script>
+</pre>
+<div>
+
+<h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Changelog</h2>
 
 <h4>1.061</h4>
 - Fixed example of 'Example-Select-Option.html' and 'Example.html', element has no document object(Thanks seanybob).
