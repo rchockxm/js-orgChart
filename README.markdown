@@ -25,7 +25,7 @@ ogChart.StyleSheet = tStyleSheet;
 ogChart.Render();
 </script>
 </pre>
-<div>
+</div>
 
 <h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Changelog</h2>
 
