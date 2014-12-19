@@ -9,7 +9,7 @@ Based on Surnfu's <a href="http://www.on-cn.com">organization.js</a> and expansi
 
 <img src="http://i.imgur.com/Z3p0xJB.png" />
 
-<h2><a name="usage" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Usage</h2>
+<h2><a name="usage" class="anchor" href="#usage"><span class="mini-icon mini-icon-link"></span></a>Usage</h2>
 
 ```html
 <script language="javascript" src="js-orgchart.js"></script>
@@ -24,7 +24,7 @@ ogChart.StyleSheet = tStyleSheet;
 ogChart.Render();
 </script>
 ```
-<h2><a name="usage" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Google Organizational Chart Data Supported</h2>
+<h2><a name="usage" class="anchor" href="#usage"><span class="mini-icon mini-icon-link"></span></a>Google Organizational Chart Data Supported</h2>
 
 ```js
 var tGoogleData = [
