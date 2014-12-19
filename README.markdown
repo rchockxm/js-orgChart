@@ -24,6 +24,18 @@ ogChart.StyleSheet = tStyleSheet;
 ogChart.Render();
 </script>
 ```
+<h2><a name="usage" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Google Organizational Chart Data Supported</h2>
+
+```js
+var tGoogleData = [
+          [{v:'Mike', f:'Mike<div style="color:red; font-style:italic">President</div>'}, '', 'The President'],
+          [{v:'Jim', f:'Jim<div style="color:red; font-style:italic">Vice President</div>'}, 'Mike', 'VP'],
+          ['Alice', 'Mike', ''],
+          ['Bob', 'Jim', 'Bob Sponge'],
+          ['Carol', 'Bob', '']];
+ 
+tRootNode = LoadGoogleOrgChartData(tGoogleData);
+```
 
 <h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Changelog</h2>
 
