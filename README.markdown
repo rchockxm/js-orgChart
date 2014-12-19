@@ -37,6 +37,8 @@ var tGoogleData = [
 tRootNode = LoadGoogleOrgChartData(tGoogleData);
 ```
 
+<a href="https://developers.google.com/chart/interactive/docs/gallery/orgchart">Google Chart</a>
+
 <h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Changelog</h2>
 
 <h4>1.061</h4>
