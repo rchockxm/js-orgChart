@@ -24,6 +24,30 @@ ogChart.StyleSheet = tStyleSheet;
 ogChart.Render();
 </script>
 ```
+
+<h2><a name="options" class="anchor" href="#options"><span class="mini-icon mini-icon-link"></span></a>Options</h2>
+
+```js
+var tOptions = new OrgOptions();
+tOptions.AutoPos = true;
+tOptions.Top = 8;
+tOptions.Left = 20;
+tOptions.paddingOffsetTop = 0;
+tOptions,paddingOffsetLeft = 0;
+tOptions.IntervalWidth = 100;
+tOptions.IntervalHeight = 60;
+tOptions.LineColor = "#3388dd";
+tOptions.LineSize = 1;
+tOptions.EdgeTemplet = "<div id=\"{Id}\" class=\"OrgEdge\"><span>{Caption}</span><div>{Description}</div></div>";
+```
+
+<h2><a name="stylesheet" class="anchor" href="#stylesheet"><span class="mini-icon mini-icon-link"></span></a>StyleSheet</h2>
+
+```js
+var tStyleSheet = new OrgStyleSheet();
+tStyleSheet.CssText = "";
+```
+
 <h2><a name="usage" class="anchor" href="#usage"><span class="mini-icon mini-icon-link"></span></a>Google Organizational Chart Data Supported</h2>
 
 ```js
