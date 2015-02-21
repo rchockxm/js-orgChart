@@ -214,12 +214,12 @@ if (newHeight > oriHeight) {
 function input_keydown_event(event) {
     event = (event == undefined) ? window.event : event;
     if (event.keyCode == 13) {
-        var search_val = document.getElementById("search_item").value;
+        var search_val = document.getElementById("search_item").value.toLowerCase();
         var childs = document.getElementById("OrgChart").getElementsByTagName("div");
         for (var i=0; i<childs.length; i++) {
             var span_name = childs[i].getElementsByTagName("span")[0];
             if (span_name != undefined || span_name != null) {
-                if (search_val != "" && span_name.innerHTML.indexOf(search_val) >= 0) {
+                if (search_val != "" && span_name.innerHTML.toLowerCase().indexOf(search_val) >= 0) {
                     span_name.parentNode.setAttribute("class", "OrgEdge_Hight");
                 }
                 else {
