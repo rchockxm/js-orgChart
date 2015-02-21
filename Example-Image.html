@@ -170,26 +170,26 @@ ogChart.RootNodes = tRootNode;
 ogChart.Options = tOptions;
 ogChart.StyleSheet = tStyleSheet;
 ogChart.NodeOnClick = function() {
-    //var hwnd = document.getElementById(this.id).getElementsByTagName("span");
-    //var name = hwnd[0].firstChild.data;
+    var hwnd = document.getElementById(this.id).getElementsByTagName("span");
+    var name = hwnd[0].firstChild.data;
 
-    //document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "Click: Name = " + name;
+    document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "Click: Name = " + name;
 };
 ogChart.NodeOnMouseMove = function() {
     var hwnd = document.getElementById(this.id).getElementsByTagName("span");
-    //var name = hwnd[0].firstChild.data;
+    var name = hwnd[0].firstChild.data;
 
-    //document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "MouseMove: Name = " + name;
+    document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "MouseMove: Name = " + name;
 };
 ogChart.NodeOnMouseOver = function() {
     var hwnd = document.getElementById(this.id).getElementsByTagName("span");
-    //var name = hwnd[0].firstChild.data;
+    var name = hwnd[0].firstChild.data;
 
-    //document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "MouseOver: Name = " + name;
+    document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "MouseOver: Name = " + name;
 };
 ogChart.NodeOnMouseOut = function() {
     var hwnd = document.getElementById(this.id).getElementsByTagName("span");
-    //var name = hwnd[0].firstChild.data;
+    var name = hwnd[0].firstChild.data;
 
     //document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "MouseOut: Name = " + name;
 };
