@@ -50,6 +50,17 @@ var tStyleSheet = new OrgStyleSheet();
 tStyleSheet.CssText = "";
 ```
 
+<h2><a name="event" class="anchor" href="#event"><span class="mini-icon mini-icon-link"></span></a>Event</h2>
+
+```js
+var ogChart = new OrgChart();
+ogChart.NodeOnClick = function() {};
+ogChart.NodeOnMouseMove = function() {};
+ogChart.NodeOnMouseOver = function() {};
+ogChart.NodeOnMouseOut = function() {};
+ogChart.DepthOnProcess = function(Depths, n) {};
+```
+
 <h2><a name="usage" class="anchor" href="#usage"><span class="mini-icon mini-icon-link"></span></a>Google Organizational Chart Data Supported</h2>
 
 ```js
