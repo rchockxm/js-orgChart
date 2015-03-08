@@ -7,6 +7,8 @@ Javascript Organizational Chart
 
 Based on Surnfu's <a href="http://www.on-cn.com">organization.js</a> and expansion feature for draw organizational chart.
 
+V2 version with an example is available <a href="https://github.com/rchockxm/js-orgChart-2">here</a>.
+
 <img src="http://i.imgur.com/Z3p0xJB.png" />
 <img src="http://i.imgur.com/emBdz13.png" />
 <img src="http://i.imgur.com/sMJN4K4.png" />
