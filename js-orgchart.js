@@ -415,14 +415,14 @@ function OrgChart(){
                 if (n != this.Depth) {
                     if (tempNodes[m].Nodes.length != 0) {
                         var tempLineLeft = tempNodes[m].Left + (tempNodes[m].Width / 2);
-                        var tempLineHeight = (this.IntervalHeight - this.LineSize);
+                        var tempLineHeight = ((this.IntervalHeight - this.LineSize) / 2);
                         
-                        if (tempNodes[m].Nodes.length % 2 == 0) {
+                        /*if (tempNodes[m].Nodes.length % 2 == 0) {
                             tempLineHeight = (tempLineHeight / 2);
                         }   
                         else if (tempNodes[m].Nodes.length == 1) {
                             tempLineHeight = (tempLineHeight - (this.IntervalHeight / 2));    
-                        }
+                        }*/
                         tempLineHeight += (this.DepthGroup[n].Height - tempNodes[m].Height);
 
                         var tempLineTop = tempNodes[m].Top + tempNodes[m].Height;
