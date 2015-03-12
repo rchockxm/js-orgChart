@@ -78,6 +78,8 @@ tRootNode = LoadGoogleOrgChartData(tGoogleData);
 
 <a href="https://developers.google.com/chart/interactive/docs/gallery/orgchart">Google Chart</a>
 
+You can view a demo of this <a href="http://jsfiddle.net/gh/get/library/pure/rchockxm/js-orgChart/tree/master/demo">here</a>.
+
 <h2><a name="about" class="anchor" href="#about"><span class="mini-icon mini-icon-link"></span></a>Changelog</h2>
 
 <h4>1.061</h4>
