@@ -6,6 +6,163 @@
     <div class="form_title_log"></div>
     <div class="form_title_search">Search: <input type="text" id="search_item" onkeydown="input_keydown_event(event);" /></div>
 </div>
+
 <div id="form_content" style="">        
     <div id="OrgChart"></div>        
 </div>
+
+<script language="javascript">
+// js-orgChart Demo by rchockxm
+var oriWidth = 640;
+var oriHeight = 480;
+var select_field = '<select onchange="select_change_event(this)"><option value="0">None</option><option value="1">Numeric A</option><option value="2">Numeric B</option></select>';
+
+// Demo Data
+var P = ['Bell', 'Bob', 'Frank', 'James', 'Alex', 'Edward', 'Tony', 'Jonic', 'Shannon', 'cwc', 'Benny', 'Tom', 'Alice', 'Fred', 'Eric', 'Mal'];
+var S = [];
+var tRootNode = new OrgNode();
+tRootNode.customParam.Caption = "Root";
+tRootNode.customParam.Description = "Demo";
+
+var HwndNode;
+var HwndObject = {};
+var ChildNode;
+for (var i=0; i<P.length; i++) {
+    var Data = P[i];
+    var Caption = Data;
+
+    HwndObject[Caption] = new OrgNode();
+    HwndObject[Caption].customParam.Caption = Caption;
+    HwndObject[Caption].customParam.Description = "Demo";
+
+    S[i] = Caption;
+
+    if (i == 0) {
+        ChildNode = HwndObject[Caption];
+    }
+    else if (i > 1) { 
+        var index = Math.round(Math.random() * (S.length - 0));
+        if (index > S.length) {
+            index = 0;
+        }
+        if (typeof S[index] == "string") {
+            HwndObject[S[index]].Nodes.Add(HwndObject[Caption]);
+        }
+    }
+}
+
+tRootNode.Nodes.Add(ChildNode);
+
+/*var tGoogleData = [
+          [{v:'Mike', f:'Mike<div style="color:red; font-style:italic">President</div>'}, '', 'The President'],
+          [{v:'Jim', f:'Jim<div style="color:red; font-style:italic">Vice President</div>'}, 'Mike', 'VP'],
+          ['Alice', 'Mike', ''],
+          ['Bob', 'Jim', 'Bob Sponge'],
+          ['Carol', 'Bob', '']];
+ 
+tRootNode = LoadGoogleOrgChartData(tGoogleData);*/
+
+// Options
+var tOptions = new OrgOptions();
+tOptions.AutoPos = true;
+tOptions.Top = 8;
+tOptions.Left = 20;
+//tOptions.paddingOffsetTop = 0;
+//tOptions,paddingOffsetLeft = 0;
+//tOptions.IntervalWidth = 100;
+//tOptions.IntervalHeight = 60;
+tOptions.EdgeWidth = 120;
+tOptions.EdgeHeight = 60;
+tOptions.LineColor = "#3388dd";
+tOptions.LineSize = 1;
+tOptions.EdgeTemplet = "<div id=\"{Id}\" class=\"OrgEdge\"><span>{Caption}</span><div>{Description}</div><div class=\"OrgNode-select\">" + select_field + "</div></div>";
+
+// StyleSheet
+var tStyleSheet = new OrgStyleSheet();
+tStyleSheet.CssText = "";
+
+// Render Chart
+var ogChart = new OrgChart();
+ogChart.RootNodes = tRootNode;
+ogChart.Options = tOptions;
+ogChart.StyleSheet = tStyleSheet;
+ogChart.NodeOnClick = function() {
+    var hwnd = document.getElementById(this.id).getElementsByTagName("span");
+    var name = hwnd[0].firstChild.data;
+
+    document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "Click: Name = " + name;
+};
+ogChart.NodeOnMouseMove = function() {
+    var hwnd = document.getElementById(this.id).getElementsByTagName("span");
+    var name = hwnd[0].firstChild.data;
+
+    //document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "MouseMove: Name = " + name;
+};
+ogChart.NodeOnMouseOver = function() {
+    var hwnd = document.getElementById(this.id).getElementsByTagName("span");
+    var name = hwnd[0].firstChild.data;
+
+    document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "MouseOver: Name = " + name;
+};
+ogChart.NodeOnMouseOut = function() {
+    var hwnd = document.getElementById(this.id).getElementsByTagName("span");
+    var name = hwnd[0].firstChild.data;
+
+    document.getElementById("form_title").getElementsByTagName("div")[1].innerHTML = "MouseOut: Name = " + name;
+};
+ogChart.DepthOnProcess = function(Depths, n) {
+    var DepthNodes = Depths;
+    var NowDepth = n;
+    
+    if (n == 4) {
+        for (var m=0; m<DepthNodes.length; m++) {
+            var divID = document.getElementById(DepthNodes[m].Id);
+            divID.style.border = '5px solid red';
+        }
+    }
+};
+ogChart.Render();
+
+// ReSet Div Content Width and Height
+var oDivStyle = ogChart.GetContainerStyle();
+var newWidth = oDivStyle.width;
+var newHeight = oDivStyle.height;
+
+if (newWidth > oriWidth) {
+    document.getElementById("form_title").style.width = newWidth + "px";
+    document.getElementById("form_content").style.width = newWidth + "px";
+}
+
+if (newHeight > oriHeight) {
+    document.getElementById("form_content").style.height = newHeight + "px";
+}
+
+// Search Function
+function input_keydown_event(event) {
+    event = (event == undefined) ? window.event : event;
+    if (event.keyCode == 13) {
+        var search_val = document.getElementById("search_item").value.toLowerCase();
+        var childs = document.getElementById("OrgChart").getElementsByTagName("div");
+        for (var i=0; i<childs.length; i++) {
+            var span_name = childs[i].getElementsByTagName("span")[0];
+            if (span_name != undefined || span_name != null) {
+                if (search_val != "" && span_name.innerHTML.toLowerCase().indexOf(search_val) >= 0) {
+                    span_name.parentNode.setAttribute("class", "OrgEdge_Hight");
+                }
+                else {
+                    span_name.parentNode.setAttribute("class", "OrgEdge");
+                }
+            }
+        }
+    }
+}
+
+// Change Function
+function select_change_event(sender) {
+    var hwnd = sender.parentNode.parentNode.getElementsByTagName("span");
+    var name = hwnd[0].firstChild.data;
+    var numeric = sender.value;
+
+    alert("Name: " + name + " Value: " + numeric);
+}
+</script>
