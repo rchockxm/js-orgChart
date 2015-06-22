@@ -1,0 +1,31 @@
+Version 1.061
+
+- Fixed example of 'Example-Select-Option.html' and 'Example.html', element has no document object(Thanks seanybob).
+
+Version 1.06
+
+- Added DepthOnProcess for OrgChart to set event.
+
+Version 1.04
+
+- Added NodeOnMouseMove, NodeOnMouseOver, NodeOnMouseOut for OrgChart to set node mouse event.
+- Fixed some bugs.
+
+Version 1.03
+
+- Added NodeOnClick for OrgChart to set node click event.
+- Added RootNodes ror OrgChart to set nodes data.
+
+Version 1.02
+
+- Added GetContainerStyle function to get chart style.
+- Added paddingOffsetTop and paddingOffsetLeft for OrgOptions to set padding pos.
+- Added HightlightText and HightlightTextColor for OrgNode to set color text.
+- Fixed some bugs.
+
+Version 1.01
+
+- Added support Google Organizational Chart data.
+- Added OrgOptions and OrgStyleSheet function.
+- Added html parent element position adaptive.
+- Fixed some bugs.
